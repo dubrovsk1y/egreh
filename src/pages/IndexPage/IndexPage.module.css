@@ -1,0 +1,68 @@
+.index {
+  border: 1px solid red;
+}
+
+/* .banner { */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
+
+  /* background-image: url('../widgets/banner.png'); */
+  /* background-size: contain; */
+  /* background-repeat: no-repeat; */
+
+  /* ЧБ */
+  /* filter: gray; */
+  /* -webkit-filter: grayscale(1); */
+  /* filter: grayscale(1); */
+/* } */
+
+
+.banner {
+  position: relative;
+}
+
+.bannerFon {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(100vh - var(--height-header));
+  opacity: 0;
+  object-fit: cover;
+}
+
+.bannerInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.bannerInnerMainText {
+  font-size: 50px;
+  font-weight: 600;
+
+  margin-bottom: 40px;
+}
+
+/* .bannerInnerAdditionalText {
+  margin-bottom: 40px;
+} */
+
+.bannerInnerButton {
+  cursor: pointer;
+  min-width: 250px;
+  height: 60px;
+  background: none;
+  border: 1px solid black;
+  border-radius: 6px;
+}

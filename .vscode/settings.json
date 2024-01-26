@@ -1,0 +1,15 @@
+{
+  // default
+  "css.validate": false,
+  "scss.validate": false,
+  // stylelint
+  "stylelint.enable": true,
+  "stylelint.validate": ["scss"],
+  // eslint
+  "eslint.enable": true,
+  // editor.codeActionsOnSave
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+}
