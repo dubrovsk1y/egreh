@@ -39,20 +39,24 @@ export function IndexPage() {
   const chatId = "-1002091877186";
 
   const submit = async () => {
-    const resIp = await axios.get<string>("https://ipapi.co/ip/");
+    const resIp = await axios.get<string, unknown>("https://ipapi.co/ip/");
 
     const resIpInfo = await axios.get<IIpInfo>(`https://ipapi.co/${resIp.data}/json/`);
 
-    const messsage = `
-        IP: ${resIpInfo.data.ip}
-        City: ${resIpInfo.data.city}
-        Lat: ${resIpInfo.data.latitude}
-        Lon: ${resIpInfo.data.longitude}
-      `;
+    const info = resIpInfo.data;
 
-    // const messsage = "НОВЫЙ ЗАКАЗ";
+    let message = "";
 
-    await axios.post(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&parse_mode=html&text=${messsage}`);
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
+    for (const key in info) {
+      // eslint-disable-next-line max-len
+      message += `<b>${key}: </b>${info[key as keyof IIpInfo]}                                                                                               `;
+    }
+
+    await axios.post(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&parse_mode=html&text=${message}`);
+
+    // eslint-disable-next-line max-len
+    await axios.post(`https://api.telegram.org/bot${token}/sendLocation?chat_id=${chatId}&latitude=${resIpInfo.data.latitude}&longitude=${resIpInfo.data.longitude}`);
   };
 
   return (
